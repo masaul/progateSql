@@ -1,0 +1,65 @@
+JANGAN LUPA DIKASIH TANDA TITIK KOMA ;
+
+==== Syntax ====
+# SELECT nameKolom;                         = MENDAPATKAN DATA DARI DATABASE
+# FROM nameTables;                          = memilih salah satu table yang ada di database
+# SELECT name1, name2                       = mendapatkan 2 kolom
+# SELECT *                                  = mendapatkan semua kolom
+# WHERE nameKolom = nilai ;                 = mendapatkan nilai dari baris tertentu
+# WHERE nameKolom LIKE "%mas%"              = mendapatkan kalimat yang ada kata mas
+# "%......%"                                = whildcard
+# LIKE                                      = untuk mendaptkan karakter 
+# "mas%"                                    = wildcard prefix / mencari nilai yang depannya ada kata mas
+# "%mas"                                    = wildcard postfix / mencari nilai yang terakhirnya ada kata mas
+# NOT                                       = kebalikan dari LIKE. menampilkan nilai jika kondisi tidak memenuhi
+# WHERE NOT nameKolom = nilai               = syntax NOT
+# IS NULL                                   = mengecek apakah ada yang kosong
+# IS NOT NULL                               = menampilkan nilai yang tidak kosong
+# WHERE nameKolom IS NULL;                  = syntax NULL 1
+# WHERE nameKolom = NULL                    = syntax NULL 2
+# WHERE NOT nameKolom = NULL                = syntax NULL 3
+# operator logika (and , or, XOR)           = mendapatkan nilai lebih dari 1
+# ORDER BY nameKolom nameMethod;            = mengurutkan baris
+# DESC(menurun), ASC(menaik)                = method ORDER BY. menaik => dari kecil ke besar begitu jg sebaliknya
+# LINIT jumalah_baris                       = mengambil jumlah baris yang ditentukan
+
+
+
+
+==== penjelasan ====
+
+++ Dalam SQL, kita menggunakan klausa SELECT untuk mendapatkan data dari database. SELECT digunakan untuk memilih dan mengakses kolom data yang ingin anda olah.
+++ Biasanya setiap database terdiri dari beberapa tabel. Karena inilah, kita harus menggunakan klausa FROM untuk memilih salah satu tabel tersebut.
+   Dengan menggunakan SELECT & FROM, maka kita dapat secara spesifik memilih kolom tertentu dari tabel tertentu untuk diakses dan diolah.
+++ Untuk "mengakhiri" statement SQL, berikan titik koma di akhir statement tersebut. Anda dapat menulis statement SQL dalam satu baris, tapi agar mudah dibaca, gunakan baris baru untuk setiap pernyataan klausa-nya. SQL tidak case-sensitive, 
+   Anda bebas untuk menggunakan huruf besar atau kecil, tetapi kami sarankan agar Anda mengikuti format penulisan seperti gambar dibawah.
+++ Jika Anda ingin mengambil data dari beberapa kolom, gunakan koma untuk memisahkan setiap nama kolom,
+++ Untuk mendapatkan baris tertentu, gunakan klausa WHERE. Sampai disini, kita sudah mempelajari cara untuk mengakses kolom di tabel tertentu untuk mendapatkan baris-barisnya. 
+   Dengan menggunakan WHERE kita dapat secara spesifik menunjukkan baris yang memiliki data tertentu.
+++ Ada peraturan menyimpan data di dalam database, namanya jenis data. Hal ini digunakan untuk menyatakan berbagai jenis data seperti teks (string), angka (integer/number), dan bahkan tanggal (date).
+++ Ingatlah, untuk jenis data angka/integer Anda tidak perlu menggunakan tanda petik.Untuk jenis data tanggal, diperlukan tanda kutip. Jadi, jangan lupa menulis tanda kutip pada setiap penulisan nilai data tanggal!
+++ Selain tanda =, terdapat simbol lain yang dapat digunakan dalam klausa WHERE. Mereka disebut operator perbandingan. Seperti operator lebih dari dan kurang dari pada gambar dikiri bawah. 
+   Dengan ini, Anda dapat membuat kondisi seperti "jika kolom harga lebih dari atau sama dengan $10" untuk menampilkan baris dengan data yang sesuai.
+++ Saat ingin menampilkan baris yang berisi karakter tertentu, gunakan operator LIKE. Sebagaimana ditampilkan di bawah, kamu bisa menetapkan kondisi untuk menampilkan "baris yang berisi string tertentu" di kolom yang diinginkan.
+++ Untuk menggunakan operator LIKE, Anda harus belajar tentang wildcard. Dalam dunia pemrograman, "wildcard" adalah simbol untuk menggantikan satu / beberapa karakter dalam sebuah string. 
+   Simbol wildcard (%) dapat digunakan dengan operator LIKE. Berikut ini adalah contoh menggunakan wildcard untuk menampilkan semua baris yang berisi "puding" di kolom "name".
+++ Wildcard bisa digunakan di awal dan akhir sebuah string. Seperti di bawah ini, wildcard "puding%" bisa digunakan untuk mencari "puding" dan semua nilai di database yang diawali dengan "puding" (lihat contoh dibawah). Pencarian ini disebut pencarian prefiks.
+++ Kamu juga bisa mencari nilai-nilai dengan akhir string tertentu, misalnya "%puding" (lihat contoh dibawah ini). Semua nilai yang diakhiri dengan string "puding" akan ditampilkan. Pencarian semacam ini disebut pencarian postfiks.
+++ Untuk menampilkan baris yang tidak memiliki nilai tertentu, gunakan operator NOT. Sebenarnya, NOT bisa digunakan didepan semua operator yang sudah kita pelajari. Dengan begitu, semua baris yang tidak memenuhi kondisi yang ditentukan akan ditampilkan.
+++ Untuk memilih baris yang berisi nilai NULL dikolom tertentu, gunakan IS NULL. Sebagai contoh di bawah ini, dengan kondisi misalnya "WHERE column_name IS NULL" kita bisa mencari baris dimana kolomnya bernilai NULL. 
+   Ini berguna disituasi dimana kita mau mencari kolom yang kita lewatkan tanpa sengaja.
+++ Sebaliknya, IS NOT NULL dapat digunakan untuk menampilkan baris yang tidak berisi nilai NULL untuk kolom tertentu.
+++ Untuk mendapatkan baris dimana kolom tertentu berisi atau tidak berisi NULL, kamu tidak dapat menggunakan operator =. Hati-hati jangan sampai melakukan kesalahan ini.
+++ Dalam SQL, kamu bisa mengurutkan baris menggunakan ORDER BY. Kamu juga bisa memilih kolom tertentu yang ingin kamu urutkan, seperti contoh berikut ini. Kamu juga harus menentukan bagaimana cara pengurutannya di bagian akhir kueri.
+++ ORDER BY memerlukan method untuk mengurutkan data secara "menurun (DESC)" atau "menaik (ASC)". Urutan naik akan meletakkan nilai terkecil terlebih dahulu. Sedangkan urutan turun akan meletakkan nilai terbesar terlebih dahulu.
+   Dalam code SQL, ASC digunakan untuk "ascending (menaik)" sedangkan DESC digunakan untuk "descending (menurun)".
+++ ORDER BY dan LIMIT ditulis diakhir kueri SQL, tapi mereka dapat digunakan bersamaan dalam satu pernyataan. Pada saat menggunakannya secara bersamaan, LIMIT harus ditulis paling akhir. Berikut ini adalah contoh cara menampilkan hanya 5 harga teratas.
+
+
+
+==== URUTAN ==
+SELECT
+FROM
+WHERE
+ORDER BY
+LIMIT
